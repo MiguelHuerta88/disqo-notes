@@ -7,7 +7,7 @@ keys:
     - ~/.ssh/id_rsa
 folders:
     -
-        map: ./disqo-notes
+        map: ./api
         to: /home/vagrant/code
 sites:
     -
