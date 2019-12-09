@@ -37,4 +37,17 @@ class NotesController extends Controller
     	// we will create the note and return a Resource
     	return new NotesResource($this->notes->create($request->all()));
     }
+
+    /**
+     * View a note
+     *
+     * @param      \App\Models\Notes  $notes  The notes
+     *
+     * @return     NotesResource      ( description_of_the_return_value )
+     */
+    public function view(Notes $notes)
+    {
+    	// we bind the model to the request so all we have to do is just return the resource
+    	return new NotesResource($notes);
+    }
 }
