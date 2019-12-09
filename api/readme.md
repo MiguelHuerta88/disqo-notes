@@ -24,7 +24,18 @@ curl -H "Content-Type: application/json" -H "Accept: application/json" -H "Autho
 # delete note
 curl -H "Accept: application/json" -H "Authorization: Bearer xkqyv0VatP8sIZX7yNKZhzP4bbynttUKYjcaM6K35byRX1YH266Yai10cfWBd2fIDY0LvHgFbyI0RNp3" -X DELETE dev.notes.com/api/note/4
 
+Project uses Homestead so .env db creds are
+DB_DATABASE=disqo
+DB_USERNAME=homestead
+DB_PASSWORD=secret
 
+must creat DB before moving on.
+Once DB has been created need to migrate the databases using
+
+php artisan migrate
+php artisan db:seed
+
+both of these commands will create the tables needed and also seed a few test users for us
 
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
