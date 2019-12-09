@@ -1,3 +1,32 @@
+# login curl request
+curl -H "Accept: application/json" -X POST dev.notes.com/api/login -d "email=guelme88@gmail.com&password=test1234”
+
+#token 
+xkqyv0VatP8sIZX7yNKZhzP4bbynttUKYjcaM6K35byRX1YH266Yai10cfWBd2fIDY0LvHgFbyI0RNp3
+
+AFTER LOGING IN. All request must contain the Bearer token that you received after making post request to login
+
+#logout
+curl -H "Accept: application/json" -H "Authorization: Bearer fjhYMPpoZCrJdRTmwsQt3UrgkB23Mhr7mMKFNusQk4sxBvByESa0wrC8Xb02htUk6Y8a5lxaBosMvDhA" -X GET dev.notes.com/api/logout
+
+# insert note
+curl -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer xkqyv0VatP8sIZX7yNKZhzP4bbynttUKYjcaM6K35byRX1YH266Yai10cfWBd2fIDY0LvHgFbyI0RNp3" -X POST dev.notes.com/api/note -d '{"title":"my first note using curl","note":"curl wow","user_id":1}'
+
+# view note
+curl -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer xkqyv0VatP8sIZX7yNKZhzP4bbynttUKYjcaM6K35byRX1YH266Yai10cfWBd2fIDY0LvHgFbyI0RNp3" -X GET dev.notes.com/api/note/4
+
+# view all notes for this user
+xkqyv0VatP8sIZX7yNKZhzP4bbynttUKYjcaM6K35byRX1YH266Yai10cfWBd2fIDY0LvHgFbyI0RNp3" -X GET dev.notes.com/api/notes
+
+# edit note
+curl -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer xkqyv0VatP8sIZX7yNKZhzP4bbynttUKYjcaM6K35byRX1YH266Yai10cfWBd2fIDY0LvHgFbyI0RNp3" -X POST dev.notes.com/api/note/4/edit -d '{"title":"my first note using curl UPDATE","note":"curl wow 123","user_id":1}'
+
+# delete note
+curl -H "Accept: application/json" -H "Authorization: Bearer xkqyv0VatP8sIZX7yNKZhzP4bbynttUKYjcaM6K35byRX1YH266Yai10cfWBd2fIDY0LvHgFbyI0RNp3" -X DELETE dev.notes.com/api/note/4
+
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
