@@ -23,4 +23,7 @@ Route::get('login', 'Api\AuthController@login')->name('login');
 Route::middleware('auth:api')->group(function() {
 	// logout
 	Route::get('logout', 'Api\AuthController@logout')->name('logout');
+
+	// Notes section
+	Route::post('note', 'Api\NotesController@create')->name('note.create');
 });
