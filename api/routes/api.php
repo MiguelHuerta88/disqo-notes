@@ -25,6 +25,7 @@ Route::middleware('auth:api')->group(function() {
 	Route::get('logout', 'Api\AuthController@logout')->name('logout');
 
 	// Notes section
+	Route::get('notes', 'Api\NotesController@all');
 	Route::post('note', 'Api\NotesController@create')->name('note.create');
 	Route::get('/note/{notes}', 'Api\NotesController@view')->middleware('owner');
 	Route::post('note/{notes}/edit', 'Api\NotesController@update')->middleware('owner');

@@ -8,6 +8,8 @@ use App\Http\Requests\CreateNoteRequest;
 use App\Models\Notes;
 use App\Http\Resources\Note as NotesResource;
 use App\Http\Requests\UpdateNoteRequest;
+use App\Http\Resources\NotesCollection;
+use Auth;
 
 class NotesController extends Controller
 {
@@ -75,5 +77,17 @@ class NotesController extends Controller
     			'message' => 'Note was delete from our database'
     		]
     	]);
+    }
+
+    /**
+     * get all notes by this user
+     *
+     * @return     NotesCollection  ( description_of_the_return_value )
+     */
+    public function all()
+    {
+    	$userId = Auth::user()->id;
+
+    	return new NotesCollection(Notes::byUser($userId)->orderBy('id', 'desc')->get());
     }
 }
