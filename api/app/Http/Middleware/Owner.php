@@ -21,6 +21,7 @@ class Owner
 
         // by the time we reach this middleware for this route we should have a notes object
         $note = isset($params['notes']) ? $params['notes'] : null;
+
         $noteId = $note ? $note->id : null;
        
         //if no userId dont continue

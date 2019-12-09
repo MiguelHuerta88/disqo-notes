@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateNoteRequest;
 use App\Models\Notes;
 use App\Http\Resources\Note as NotesResource;
+use App\Http\Requests\UpdateNoteRequest;
 
 class NotesController extends Controller
 {
@@ -14,16 +15,6 @@ class NotesController extends Controller
 	 * @var Notes model instance
 	 */
 	public $notes;
-
-	/**
-	 * Constructor
-	 *
-	 * @param      \App\Models\Notes  $note   The note
-	 */
-	public function __construct(Notes $note)
-	{
-		$this->notes = $note;
-	}
 
 	/**
 	 * Create note
@@ -35,7 +26,7 @@ class NotesController extends Controller
     public function create(CreateNoteRequest $request)
     {
     	// we will create the note and return a Resource
-    	return new NotesResource($this->notes->create($request->all()));
+    	return new NotesResource(Notes::create($request->all()));
     }
 
     /**
@@ -49,5 +40,40 @@ class NotesController extends Controller
     {
     	// we bind the model to the request so all we have to do is just return the resource
     	return new NotesResource($notes);
+    }
+
+    /**
+     * Update function
+     *
+     * @param      \App\Http\Requests\UpdateNoteRequest  $request  The request
+     * @param      \App\Models\Notes                     $notes    The notes
+     *
+     * @return     NotesResource                         ( description_of_the_return_value )
+     */
+    public function update(UpdateNoteRequest $request, Notes $notes)
+    {
+    	// update the note and return it
+    	$notes->update($request->all());
+
+    	return new NotesResource($notes);
+    }
+
+    /**
+     * Delete note
+     *
+     * @param      \App\Models\Notes  $notes  The notes
+     *
+     * @return     <type>             ( description_of_the_return_value )
+     */
+    public function delete(Notes $notes)
+    {
+    	// delete the model and return a json response
+    	$notes->delete();
+
+    	return response()->json([
+    		'data' => [
+    			'message' => 'Note was delete from our database'
+    		]
+    	]);
     }
 }
